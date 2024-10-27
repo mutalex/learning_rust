@@ -4,7 +4,7 @@ fn main() {
     // Create a new input buffer
     let mut input = String::new();
 
-    println!("Please enter a number between 0 and 127:");
+    println!("Please enter a number between 0 and 255:");
 
     // Read the user input
     io::stdin()
@@ -13,9 +13,9 @@ fn main() {
 
     // Try to parse the input into an integer
     let my_number: u8 = match input.trim().parse() {
-        Ok(num) if num <= 127 => num,
-        _ => {
-            println!("Please enter a valid number between 0 and 127.");
+        Ok(num) => num,
+        Err(_) => {
+            println!("Please enter a valid number between 0 and 255.");
             return;
         }
     };
