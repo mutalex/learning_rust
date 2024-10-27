@@ -1,0 +1,25 @@
+use std::io;
+
+fn main() {
+    // Create a new input buffer
+    let mut input = String::new();
+
+    println!("Please enter a number between 0 and 127:");
+
+    // Read the user input
+    io::stdin()
+        .read_line(&mut input)
+        .expect("Failed to read input");
+
+    // Try to parse the input into an integer
+    let my_number: u8 = match input.trim().parse() {
+        Ok(num) if num <= 127 => num,
+        _ => {
+            println!("Please enter a valid number between 0 and 127.");
+            return;
+        }
+    };
+
+    // Convert to a char and print it
+    println!("The corresponding character is: '{}'", my_number as char);
+}
